@@ -42,7 +42,6 @@ public class Board {
                 System.out.print(list[i1][i2]+" ");
             }
             System.out.println("");
-
         }
     }
 
@@ -53,15 +52,7 @@ public class Board {
      * @param y y座標
      */
     public void putOrTurnStone(String color,int x, int y){
-        if (list[y][x].equals("●")){
-            list[y][x] = "○";
-        }
-        if (list[y][x].equals("○")){
-            list[y][x] = "●";
-        }
-        if (list[y][x].equals("*")){
-            list[y][x] = color;
-        }
+        list[y][x] = color;
     }
     /**
      * boolean型になっている変数Blackから色を出力させる。
