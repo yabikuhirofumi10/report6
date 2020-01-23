@@ -1,6 +1,4 @@
 package jp.ac.uryukyu.ie.e195762;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
@@ -14,25 +12,22 @@ public class Main {
 
         while (!(cb.board.gameSet)){
             System.out.println("今は"+cb.board.printColor()+"の番です。");
-            Pattern p = Pattern.compile("[0-9]");
             while (true){
                 System.out.println("x座標を入力してください<<<");
                 inputX = in.nextLine();
-                Matcher m = p.matcher(inputX);
-                if (m.find()){
+                if (inputX.matches("[1-8]")){
                     break;
                 }else{
-                    System.out.println("０〜９までの数字を入力してください");
+                    System.out.println("１〜８までの半角数字を入力してください");
                 }
             }
             while (true){
                 System.out.println("y座標を入力してください<<<");
                 inputY = in.nextLine();
-                Matcher m = p.matcher(inputY);
-                if (m.find()){
+                if (inputY.matches("[1-8]")){
                     break;
                 }else {
-                    System.out.println("０〜９までの数字を入力してください");
+                    System.out.println("１〜８までの数字を入力してください");
                 }
             }
             cb.totalCheck(cb.board.printColor(), Integer.parseInt(inputX), Integer.parseInt(inputY));
