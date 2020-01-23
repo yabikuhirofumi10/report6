@@ -14,6 +14,7 @@ public class Board {
      * コンストラクタ。ボードの初期配置を二次元配列の中に構築
      */
     public Board() {
+        this.Black = true;
         for (int i1 = 0; i1 < list.length; i1++) {
             for (int i2 = 0; i2 < list.length; i2++) {
                 list[i1][i2] = "*";
@@ -39,8 +40,9 @@ public class Board {
     public void showBoard(){
         for(int i1 = 0; i1 < list.length; i1++){
             for(int i2 = 0; i2 < list.length; i2++){
-                System.out.print(list[i1][i2]+" ");
+                System.out.print(list[i1][i2]+"    ");
             }
+            System.out.println("");
             System.out.println("");
         }
     }
@@ -60,11 +62,22 @@ public class Board {
      */
     public String printColor(){
         if (Black == true){
-            color = "○";
-        }
-        if (Black == false){
             color = "●";
         }
+        if (Black == false){
+            color = "○";
+        }
         return color;
+    }
+
+    /**
+     * 先手後手を変換する。boolean型のBlack=trueで先手側
+     */
+    public void turnEnd(){
+        if (Black){
+            Black = false;
+        }else {
+            Black = true;
+        }
     }
 }
