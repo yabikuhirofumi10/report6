@@ -14,7 +14,6 @@ public class Board {
      * コンストラクタ。ボードの初期配置を二次元配列の中に構築
      */
     public Board() {
-        this.Black = true;
         for (int i1 = 0; i1 < list.length; i1++) {
             for (int i2 = 0; i2 < list.length; i2++) {
                 list[i1][i2] = "*";

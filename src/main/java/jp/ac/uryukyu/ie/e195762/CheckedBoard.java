@@ -6,10 +6,18 @@ package jp.ac.uryukyu.ie.e195762;
 public class CheckedBoard {
 
     Board board = new Board();
+    //8方向の石の反転を保存。upper = true で座標x,yの上にある石がひっくり返っている。
     boolean upperLeft,upper,upperRight,right,lowerRight,lower,lowerLeft,left;
+
+    /**
+     * 座標x,yからの８方向全てを調べ石が置けるかどうかを判断するメソッド。
+     * @param color
+     * @param x
+     * @param y
+     */
     public void totalCheck(String color, int x, int y){
+        //まだ石の置かれていないところに
         if (board.list[y][x].equals("*")) {
-            //
             upperLeft(color, x, y);
             upper(color, x, y);
             upperRight(color, x, y);
@@ -18,20 +26,31 @@ public class CheckedBoard {
             lower(color, x, y);
             lowerLeft(color, x, y);
             left(color, x, y);
-            if (upperLeft == false && upper == false && upperRight == false && right == false && lowerRight == false && lower == false && lowerLeft == false && left == false) {
+            //8方向全てひっくり返る石がない時
+            if (!upperLeft && !upper && !upperRight && !right && !lowerRight && !lower && !lowerLeft && !left) {
                 System.out.println("そこに石は配置できません");
+            //
+            //石がひっくり変える時
             } else {
                 board.turnEnd();
             }
+        }else {
+            System.out.println("すでにこの座標には石があります");
         }
     }
 
+    public void stoneCount(){
+
+    }
+
     /**
-     *左斜め上の石の色をチェックする。
+     * それぞれ盤上の座標x,yから8方向の反転可能かどうかを調べるメソッド
+     *
      * @param color 直前に石を置いたプレイヤーの石の色
      * @param x　ひっくり返す石のx座標
      * @param y　ひっくり返す石のy座標
      */
+    //左上
     public void upperLeft(String color, int x, int y){
         if (x-2>0 && y-2>0){
             //最低でもx-2,y-2が存在しないと石がひっくりかえることはない
@@ -59,6 +78,7 @@ public class CheckedBoard {
             upperLeft = false;
         }
     }
+    //x,y座標の上を調べる
     public void upper(String color, int x, int y){
         if (y-2>0){
             if (!(board.list[y-1][x].equals(color) | board.list[y-1][x].equals("*"))){
@@ -83,6 +103,7 @@ public class CheckedBoard {
             upper  = false;
         }
     }
+    //右斜めうえ
     public void upperRight(String color, int x, int y){
         if (x+2<9 && y-2>0){
             if (!(board.list[y-1][x+1].equals(color) | board.list[y-1][x+1].equals("*"))){
@@ -107,6 +128,7 @@ public class CheckedBoard {
             upperRight  =false;
         }
     }
+    //右
     public void right(String color, int x, int y){
         if (x+2<9){
             if (!(board.list[y][x+1].equals(color) | board.list[y][x+1].equals("*"))){
@@ -131,6 +153,7 @@ public class CheckedBoard {
             right = false;
         }
     }
+    //右下
     public void lowerRight(String color, int x, int y){
         if (x+2<9 && y+2<9){
             if (!(board.list[y+1][x+1].equals(color) | board.list[y+1][x+1].equals("*"))){
@@ -155,6 +178,7 @@ public class CheckedBoard {
             lowerRight = false;
         }
     }
+    //下
     public void lower(String color, int x, int y){
         if (y+2>0){
             if (!(board.list[y+1][x].equals(color) | board.list[y+1][x].equals("*"))){
@@ -179,6 +203,7 @@ public class CheckedBoard {
             lower  =false;
         }
     }
+    //左下
     public void lowerLeft(String color, int x, int y){
         if (x-2>0 && y+2<9){
             if (!(board.list[y+1][x-1].equals(color) | board.list[y+1][x-1].equals("*"))){
@@ -203,6 +228,7 @@ public class CheckedBoard {
             lowerLeft = false;
         }
     }
+    //左
     public void left(String color, int x, int y){
         if (x-2>0){
             if (!(board.list[y][x-1].equals(color) | board.list[y][x-1].equals("*"))){

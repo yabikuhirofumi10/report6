@@ -13,13 +13,17 @@ public class Main {
 
         while (!(cb.board.gameSet)){
             System.out.println("今は"+cb.board.printColor()+"の番です。");
-            System.out.println("x座標を入力してください<<<");
-            inputX = in.nextInt();
-            System.out.println("y座標を入力してください<<<");
-            inputY = in.nextInt();
-            cb.totalCheck(cb.board.printColor(), inputX, inputY);
-            cb.board.showBoard();
-
+            try {
+                System.out.println("x座標を入力してください<<<");
+                inputX = in.nextInt();
+                System.out.println("y座標を入力してください<<<");
+                inputY = in.nextInt();
+                cb.totalCheck(cb.board.printColor(), inputX, inputY);
+                cb.board.showBoard();
+            }catch (InputMismatchException e){
+                System.out.println("半角数字でお願いします");
+                break;
+            }
         }
     }
 }
