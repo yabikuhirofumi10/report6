@@ -7,12 +7,12 @@ class CheckedBoardTest {
     @org.junit.jupiter.api.Test
     void upperLeft() {
         CheckedBoard cb = new CheckedBoard();
-        cb.board.putOrTurnStone("●",3,3);
+        cb.board.putOrTurnStone("●",6,6);
+        //cb.board.putOrTurnStone("●",6,5);
+        //cb.board.putOrTurnStone("●",6,2);
         cb.board.showBoard();
         System.out.println("");
-        cb.upperLeft("●",6,6);
-        assertEquals(cb.board.list[5][5],"●");
-        assertEquals(cb.board.list[4][4],"●");
-        cb.board.showBoard();
+        cb.upperLeft("○",7,7);
+        assertEquals(cb.board.list[6][6], "○");
     }
 }
